@@ -19,7 +19,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('data/{name?}',[Userdata::class,'getdata']);
-Route::post('adddata',[Userdata::class,'savedata']);
-Route::put('update',[Userdata::class,'updatedata']);
-Route::put('validate_api',[Userdata::class,'apivalidation_f']);
+Route::group(['middleware' => 'auth:sanctum'], function(){
+
+    });
+Route::post("login",[Userdata::class,'login']);
+
+
+
